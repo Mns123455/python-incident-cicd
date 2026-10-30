@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-incident-cicd
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: python-incident-cicd
+  template:
+    metadata:
+      labels:
+        app: python-incident-cicd
+    spec:
+      containers:
+        - name: incident-tracker
+          image: python-incident-cicd:1.0
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
+          env:
+            - name: APP_VERSION
+              value: "1.0.0"
