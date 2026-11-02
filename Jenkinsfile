@@ -18,7 +18,8 @@ pipeline {
         stage('Docker Build') {
             steps {
                 echo 'Building Docker image'
-                sh 'docker build --progress=plain -t python-incident-cicd:1.0 .'
+sh 'env HOME=/var/lib/jenkins docker build --progress=plain -t python-incident-cicd:1.0 .'
+                
             }
         }
 
